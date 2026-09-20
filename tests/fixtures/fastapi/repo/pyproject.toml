@@ -1,0 +1,7 @@
+[project]
+name = "blueprint"
+version = "0.1.0"
+dependencies = ["fastapi", "pydantic-settings", "sqlalchemy", "alembic", "bcrypt", "pyjwt"]
+
+[dependency-groups]
+dev = ["ruff", "mypy", "pytest", "pytest-bdd"]

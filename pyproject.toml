@@ -1,0 +1,28 @@
+[project]
+name = "vibecheck"
+version = "0.1.0"
+description = "AGENTS.md-driven codebase evaluation"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [{name = "Natu Lauchande"}]
+keywords = ["vibeops", "agents", "evaluation", "code-quality"]
+
+# Zero required dependencies for v0.1
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov"]
+
+[project.scripts]
+vibecheck = "vibecheck.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vibecheck"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
