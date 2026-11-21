@@ -117,14 +117,6 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
-    argv = sys.argv[1:] if argv is None else list(argv)
-    if argv and argv[0] == "skill":
-        # `vibecheck skill PATH` checks an agent skill. To evaluate a repo in a folder
-        # that is itself named "skill", pass it as `./skill`.
-        from .skill import main as skill_main
-
-        return skill_main(argv[1:])
-
     args = build_parser().parse_args(argv)
     repo = Path(args.path)
 
