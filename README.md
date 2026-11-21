@@ -8,7 +8,7 @@ Evaluate a codebase against its AGENTS.md policy.
 pip install git+https://github.com/vibeops-central/vibecheck
 ```
 
-The package is named `vibecheck-cli` and installs the `vibecheck` command. It is not on
+The package is named `vibeops-check` and installs the `vibecheck` command. It is not on
 PyPI yet; the `vibecheck` name there belongs to an unrelated project.
 
 ## Usage
