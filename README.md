@@ -5,10 +5,11 @@ Evaluate a codebase against its AGENTS.md policy.
 ## Install
 
 ```bash
-pip install vibecheck
-# or
-uv add vibecheck
+pip install git+https://github.com/vibeops-central/vibecheck
 ```
+
+The package is named `vibecheck-cli` and installs the `vibecheck` command. It is not on
+PyPI yet; the `vibecheck` name there belongs to an unrelated project.
 
 ## Usage
 
