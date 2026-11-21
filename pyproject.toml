@@ -1,5 +1,5 @@
 [project]
-name = "vibecheck"
+name = "vibeops-check"
 version = "0.1.0"
 description = "AGENTS.md-driven codebase evaluation"
 readme = "README.md"

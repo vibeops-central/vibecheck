@@ -5,10 +5,11 @@ Evaluate a codebase against its AGENTS.md policy.
 ## Install
 
 ```bash
-pip install vibecheck
-# or
-uv add vibecheck
+pip install git+https://github.com/vibeops-central/vibecheck
 ```
+
+The package is named `vibeops-check` and installs the `vibecheck` command. It is not on
+PyPI yet; the `vibecheck` name there belongs to an unrelated project.
 
 ## Usage
 
@@ -62,6 +63,38 @@ Vibecheck finds your `AGENTS.md`, extracts the checkable rules it declares using
 matching, evaluates each one statically against the repository's files, and combines the
 results into per-dimension scores and a composite Vibecheck Score (0.0 – 1.0). v0.1 is
 static only: no LLM calls, no network access, no runtime dependencies.
+
+## Checking a skill
+
+Agent skills run with your agent's permissions. Check one before it gets in:
+
+```bash
+vibecheck skill path/to/skill          # check
+vibecheck skill path/to/skill --pin    # after you have reviewed it: record its hash
+```
+
+```
+  ⚡ Vibecheck 0.1.0 · skill: tidy-notes
+  ──────────────────────────────────────────────
+  Score: 1.000
+  ──────────────────────────────────────────────
+  Permissions      ████████████████████  1.00  50%
+  Version          ████████████████████  1.00  30%
+  Cost             ████████████████████  1.00  20%
+  Proof            needs agent runs; not part of the static check
+  ──────────────────────────────────────────────
+  14 checks · 14 passed · 0 failed · 0 to review
+  1 files · SKILL.md about 37 tokens · whole skill about 37 · sha256 dc00e696ed6f
+```
+
+- **Permissions** — what it reads, writes, runs and calls. Piping a download into a shell,
+  touching credentials or hiding characters blocks the skill outright.
+- **Version** — one hash over every file, compared with `skills.lock.json`. A change since
+  the skill was pinned blocks it until you review and pin again.
+- **Cost** — estimated tokens it adds to the context.
+
+It is a static scan that supports a human review; it does not run the skill and it does not
+replace reading it. Details and limits: [spec/skill-check.md](spec/skill-check.md).
 
 ## Python API
 
